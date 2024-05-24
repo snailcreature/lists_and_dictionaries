@@ -2,7 +2,8 @@
 # Let's make a pet management system
 import pickle
 
-pets = {
+# Dictionary containing pet data. #
+pets: dict = {
     "Bob": {
         "age": 3,
         "type": "Goldfish",
@@ -15,8 +16,9 @@ pets = {
     }
 }
 
-def main():
-    choice = 0
+def main() -> None:
+    # The menu choice of the user
+    choice: str = ""
     with open("pets.dat", 'rb') as f:
         pets = pickle.load(f)
     f.close()
@@ -44,17 +46,17 @@ Go to:
         elif choice in pets.keys():
             print(pets[choice])
         elif choice == "2":
-            name = input("What is the Pet's name? ")
-            age = int(input("How old is the Pet in years? "))
-            p_type = input("What type of pet is the Pet? ")
-            gender = input("What gender is the Pet? ")
+            name: str = input("What is the Pet's name? ")
+            age: int = int(input("How old is the Pet in years? "))
+            p_type: str = input("What type of pet is the Pet? ")
+            gender: str = input("What gender is the Pet? ")
             pets[name] = {
                 "age": age,
                 "type": p_type,
                 "gender": gender
             }
         elif choice == "3":
-            name = input("Which Pet should be removed: ")
+            name: str = input("Which Pet should be removed: ")
             if name in pets.keys():
                 del pets[name]
         elif choice == "SAVE":
